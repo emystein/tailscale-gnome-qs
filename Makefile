@@ -3,7 +3,7 @@ EXTENSION_DIR = "tailscale@joaophi.github.com"
 
 all: build install
 
-.PHONY: build install clean
+.PHONY: build install uninstall clean
 
 build:
 	rm -f $(BUNDLE_PATH); \
@@ -17,6 +17,9 @@ build:
 
 install:
 	gnome-extensions install $(BUNDLE_PATH) --force
+
+uninstall:
+	gnome-extensions uninstall $(EXTENSION_DIR)
 
 enable:
 	dbus-run-session -- gnome-extensions enable tailscale@joaophi.github.com
